@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+                <form action='.' method='POST'> {% csrf_token %}                  
+                    {{ offer_form.as_p }}
+                <input type='submit' value='Make Offer'>
+                </form>               
+{% endblock %}
+
+
+{% block jumbotron%}
+<div class="jumbotron masthead">
+  <div class="container">
+    <h1>whatchuneed</h1>
+    <div class='row'>
+        <div class='span6 pull-left'>
+    <br><br><br>
+    <p>Find someone who'd take you up on your offer</p>
+    <p>
+      <a id="myOfferBtn" role="button" data-toggle="modal" class='btn btn-success btn-large'> Make an Offer!</a>
+    </p>
+        </div>
+    <div class='span6 pull-right'>
+        <iframe width="560" height="315" src="//www.youtube.com/embed/WzcCxGvvShI" frameborder="0" allowfullscreen></iframe>    </div>
+    </div>
+
+  </div>
+  </div>
+</div>
+
+<div id="myOfferModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+    <h3 id="myModalLabel">Make an Offer</h3>
+  </div>
+  <div class="modal-body">
+
+<a name="offer"></a>
+<form action='.' id="submit_form" method='POST'>{% csrf_token %} 
+ 
+<p><label for="id_name">Name:</label> <input id="id_name" maxlength="20" name="name" type="text" required></p>
+<p><label for="id_email">Email:</label> <input class="3" id="id_email" maxlength="18" name="email" type="email" required></p>
+<p><label for="id_phone">Phone:</label> <input class="3" id="id_phone" name="phone" type="text" required></p>
+<p><label for="id_deliver_what">What do you need:</label>  <input id="id_deliver_what" maxlength="250" name="deliver_what" type="text" required></p>
+<p><label for="id_deliver_where">To be done where:</label> <input id="id_deliver_where" maxlength="250" name="deliver_where" type="text" required></p>
+<p><label for="id_delivery_cost">Your Offer:</label> <input id="id_offer_for_delivery" maxlength="250" name="offer_for_delivery" type="text" required></p>
+<p><label for="id_duration_of_offer">Length of offer:</label> <input id="id_length_of_offer" maxlength="250" name="length_of_offer" type="text" /></p>   
+
+<div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <input class='btn btn-primary btn-large' type ='submit' value="Make offer!"/>
+</div>
+</form>
+  </div>
+</div>
+
+<script>
+    $(function() {
+        
+        $("#myOfferBtn").click(function() {
+          $("#myOfferModal").modal('show');
+        })
+    })
+</script>
+{% endblock %}
+
+
+{% block explanation %}
+<h1> How it works </h1>
+<div class='row'>
+    <div class='span4'>
+        <img src='{{STATIC_URL}}img/question.png' />
+        <h2>Need a favor</h2>
+    </div>
+    
+    <div class='span4'>
+        <img src='{{STATIC_URL}}img/SubmitOffer.png' />
+        <h2>Make an offer</h2>
+    </div>
+    
+    <div class='span4'>
+        <img src='{{STATIC_URL}}img/work.png' />
+        <h2>Find someone to do it for you</h2>
+    </div>
+            
+</div>
+{% endblock %}
