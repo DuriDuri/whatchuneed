@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     (r'media(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     (r'static(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
     url(r'^$', 'offer.views.home'),
+    (r'^accounts/', include('userena.urls')),
 )

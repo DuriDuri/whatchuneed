@@ -8,8 +8,15 @@ account_sid = "AC5a3b3bd42351ca3b43bc281baf7a4f2d"
 auth_token  = "747cba37eb310c39e44ea248e59d6eee"
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Duri', 'durid@union.edu'),
 )
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'duri.abdurahman@gmail.com'
+EMAIL_HOST_PASSWORD = 'Allaroundtheworld'
+
 
 MANAGERS = ADMINS
 
@@ -132,7 +139,26 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'offer',
     'django_twilio',
+    'userena',
+    'guardian',
+    'easy_thumbnails',
+    'accounts',
 )
+
+# Userena Authentication Backends
+AUTHENTICATION_BACKENDS = (
+    'userena.backends.UserenaAuthenticationBackend',
+    'guardian.backends.ObjectPermissionBackend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+ANONYMOUS_USER_ID = -1
+
+AUTH_PROFILE_MODULE = 'accounts.MyProfile'  
+  
+LOGIN_REDIRECT_URL = '/accounts/%(username)s/'  
+LOGIN_URL = '/accounts/signin/'  
+LOGOUT_URL = '/accounts/signout/'  
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 

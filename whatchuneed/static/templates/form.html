@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block content %}
+{% block orderform %}
                 <form action='.' method='POST'> {% csrf_token %}                  
                     {{ offer_form.as_p }}
                 <input type='submit' value='Make Offer'>
@@ -20,8 +20,10 @@
       <a id="myOfferBtn" role="button" data-toggle="modal" class='btn btn-success btn-large'> Make an Offer!</a>
     </p>
         </div>
-    <div class='span6 pull-right'>
-        <iframe width="560" height="315" src="//www.youtube.com/embed/WzcCxGvvShI" frameborder="0" allowfullscreen></iframe>    </div>
+    <div class="videoWrapper span6 pull-right">
+    <iframe width="560" height="315" src="http://www.youtube.com/embed/WzcCxGvvShI" frameborder="0" allowfullscreen></iframe>
+    </div>
+    
     </div>
 
   </div>
